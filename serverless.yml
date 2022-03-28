@@ -1,0 +1,18 @@
+service: aws-java-simple-http-endpoint
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: java11
+  region: us-west-2
+
+package:
+  artifact: build/distributions/aws-java-simple-http-endpoint.zip
+
+functions:
+  currentTime:
+    handler: com.serverless.Handler
+    events:
+      - httpApi:
+          path: /time
+          method: get
